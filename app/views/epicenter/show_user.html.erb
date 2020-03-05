@@ -13,10 +13,7 @@
 		<% end %>
     <% end %>
 </p>
-<p>
-    <strong>User:</strong>
-    <%= link_to @tweet.user.username, show_user_path(id: @tweet.user.id) %>
-</p>
+
 <% @user.tweets.each do |tweet| %>
     <div>
         <p>@<%= @user.username %></p>

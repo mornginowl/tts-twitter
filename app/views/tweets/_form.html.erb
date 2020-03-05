@@ -14,11 +14,7 @@
   <div class="form-group">
     <%= form.text_field :message, placeholder: "What's happening?", class: "form-control" %>
   </div>
-
-
-    <%= form.hidden_field :user_id, value: current_user.id %>
-
-
+  <%= form.hidden_field :user_id, value: current_user.id %>
   <div class="form-group">
     <%= form.submit "Tweet It!", class: "btn btn-primary" %>
   </div>

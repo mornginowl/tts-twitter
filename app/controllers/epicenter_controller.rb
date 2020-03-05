@@ -1,4 +1,7 @@
 class EpicenterController < ApplicationController
+  def all_users
+    @users = User.all
+  end
   def feed
     @following_tweets = []
     Tweet.all.each do |tweet|
@@ -7,7 +10,9 @@ class EpicenterController < ApplicationController
       end
     end
   end
-
+  def tag_tweets
+      @tag = Tag.find(params[:id])
+  end
   def show_user
   	@user = User.find(params[:id])
   end
@@ -23,5 +28,26 @@ class EpicenterController < ApplicationController
 	  current_user.save
 	  redirect_to show_user_path(id: params[:id])  	
   end
+# epicenter_controller.rb
+  def following
+    @user = User.find(params[:id])
+    @users = []
 
+    User.all.each do |user|
+      if @user.following.include?(user.id)
+        @users.push(user)
+      end
+    end
+  end
+
+  def followers
+    @user =  User.find(params[:id])
+    @users = []
+
+    User.all.each do |user|
+      if user.following.include?(@user.id)
+        @users.push(user)
+      end
+    end
+  end
 end
